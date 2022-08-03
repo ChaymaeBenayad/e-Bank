@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>e-Bank</title>
+  </head>
+  <body>
+    <!-- MAIN CONTENT -->
+    <div class="main-content hidden">
+      <!-- NAVBAR -->
+      <header>
+        <img class="logo" src="./img/logo.png" alt="logo" />
+        <nav>
+          <ul class="navbar">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#mymovements">Movements</a></li>
+            <li><a href="#myoperations">Operations</a></li>
+            <li><a href="#">Log Out</a></li>
+          </ul>
+        </nav>
+        <p class="welcome"></p>
+      </header>
+
+      <!-- BACKGROUND IMAGE -->
+      <div class="img-container">
+        <img
+          id="#home"
+          class="transparent-bg"
+          src="./img/bg.jpg"
+          alt="background"
+        />
+        <h1>
+          e-Bank,<br />
+          a simpler banking experience<br />
+          for an easier life
+        </h1>
+      </div>
+
+      <!-- MOVEMENTS SECTION -->
+      <h1 id="mymovements" class="title">My Movements</h1>
+      <div class="app-container">
+        <!-- BALANCE -->
+        <div class="balance">
+          <div>
+            <p class="balance-label">
+              Current balance&nbsp;<span class="balance-date"
+                >( 05/03/2037 )</span
+              >
+            </p>
+          </div>
+          <p class="balance-value">0DH</p>
+        </div>
+
+        <!-- MOVEMENTS -->
+        <div class="movements">
+          <div class="movements-row none-border"></div>
+          <div class="movements-row none-border"></div>
+          <div class="movements-row none-border"></div>
+        </div>
+
+        <!-- SUMMARY -->
+        <div class="summary">
+          <p class="summary-label">Income</p>
+          <p class="summary-value summary-value-in">0DH</p>
+          <p class="summary-label">Outcome</p>
+          <p class="summary-value summary-value-out">0DH</p>
+          <p class="summary-label">Interest</p>
+          <p class="summary-value summary-value-interest">0DH</p>
+          <button class="btn-sort">&downarrow; SORT</button>
+        </div>
+      </div>
+
+      <!-- OERATIONS SECTION -->
+      <h1 class="title">My Operations</h1>
+      <div id="myoperations" class="operation-container">
+        <!-- OPERATION: TRANSFER -->
+        <div class="operation operation-transfer">
+          <h2>Transfer money</h2>
+          <form class="form form-transfer">
+            <input type="text" class="form-operation-input form-input-to" />
+            <input
+              type="number"
+              class="form-operation-input form-input-amount"
+            />
+            <button class="form-btn form-btn-transfer">&rarr;</button>
+            <label class="form-label">Transfer to</label>
+            <label class="form-label">Amount</label>
+          </form>
+        </div>
+
+        <!--OPERATION: LOAN-->
+        <div class="operation operation-loan">
+          <h2>Request loan</h2>
+          <form class="form form-loan">
+            <input
+              type="number"
+              class="form-operation-input form-input-loan-amount"
+            />
+            <button class="form-btn form-btn-loan">&rarr;</button>
+            <label class="form-label form-label-loan">Amount</label>
+          </form>
+        </div>
+
+        <!-- OPERATION: CLOSE -->
+        <div class="operation operation-close">
+          <h2>Close account</h2>
+          <form class="form form-close">
+            <input type="text" class="form-operation-input form-input-user" />
+            <input
+              type="password"
+              maxlength="6"
+              class="form-operation-input form-input-pin"
+            />
+            <button class="form-btn form-btn-close">&rarr;</button>
+            <label class="form-label">Confirm user</label>
+            <label class="form-label">Confirm PIN</label>
+          </form>
+        </div>
+      </div>
+
+      <!-- LOGOUT TIMER -->
+      <p class="logout-timer">
+        You will be logged out in <span class="timer">05:00</span>
+      </p>
+
+      <footer>
+        <p>Developed by <a target="_blank" href="#">Chaymae BENAYAD</a></p>
+      </footer>
+    </div>
+
+    <!-- LOGIN CONTENT -->
+    <div class="container">
+      <!-- SIGN UP FORM -->
+      <div class="form-container sign-up-container">
+        <form action="" class="sign-up-form">
+          <h1>Create Account</h1>
+          <input
+            class="form-input sign-up-name"
+            type="text"
+            placeholder="Full Name"
+          />
+          <input
+            class="form-input sign-up-username"
+            type="text"
+            placeholder="Username"
+          />
+          <input
+            class="form-input sign-up-pin"
+            type="password"
+            placeholder="Pin"
+            maxlength="4"
+          />
+          <button class="btn signUpFormBtn">Sign Up</button>
+        </form>
+      </div>
+
+      <!-- SIGN IN FORM -->
+      <div class="form-container sign-in-container">
+        <form action="" class="sign-in-form">
+          <h1>Sign In</h1>
+          <input
+            class="form-input sign-in-username"
+            type="text"
+            placeholder="Username"
+          />
+          <input
+            class="form-input sign-in-pin"
+            type="password"
+            placeholder="Pin"
+            maxlength="4"
+          />
+          <button class="btn signInFormBtn">Login</button>
+        </form>
+      </div>
+
+      <div class="overlay-container">
+        <div class="overlay">
+          <!-- LEFT OVERLAY -->
+          <div class="overlay-panel overlay-left">
+            <h1>Welcome Back!</h1>
+            <p class="txt">
+              To keep connected with us please login with your personal info
+            </p>
+            <button class="btn ghost signIn">Sign In</button>
+          </div>
+
+          <!-- RIGHT OVERLAY -->
+          <div class="overlay-panel overlay-right">
+            <h1>Welcome to<br />e-Bank!</h1>
+            <h4>A simpler banking experience for an easier life</h4>
+            <p class="txt">
+              Enter your personal details and start journey with us
+            </p>
+            <button class="btn ghost signUp">create account</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="light-gray-overlay"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
