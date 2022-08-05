@@ -327,8 +327,7 @@ header nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 2.5rem 2rem 2.5rem;
-  padding: 0 180px;
+  margin: 0 0 2rem;
 }
 
 .balance-label {
@@ -340,6 +339,7 @@ header nav {
   font-size: 2rem;
   font-weight: 500;
   color: #888;
+  margin-left: 15px;
 }
 
 .balance-value {
@@ -375,10 +375,10 @@ header nav {
 }
 
 .movements-date {
-  font-size: 1.1rem;
-  text-transform: uppercase;
+  font-size: 1.4rem;
   font-weight: 500;
   color: #666;
+  text-transform: uppercase;
 }
 
 .movements-type-deposit {
