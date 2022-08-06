@@ -36,12 +36,13 @@ const btnTransfer = document.querySelector(".form-btn-transfer");
 const btnLoan = document.querySelector(".form-btn-loan");
 const btnClose = document.querySelector(".form-btn-close");
 const btnSort = document.querySelector(".btn-sort");
+const btnLogout = document.querySelector(".logout");
 
 // Data
 const account1 = {
-  owner: "Jonas Schmedtmann",
-  username: "jonas22",
-  pin: 1111,
+  owner: "Chaymae Benayad",
+  username: "chamben",
+  pin: 1234,
   movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
   interestRate: 1.2, // %
   movementsDates: [
@@ -57,9 +58,9 @@ const account1 = {
 };
 
 const account2 = {
-  owner: "Jessica Davis",
-  username: "jessicaD",
-  pin: 2222,
+  owner: "Amine Alaoui",
+  username: "amine30",
+  pin: 1020,
   movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
   interestRate: 1.5,
   movementsDates: [
@@ -77,8 +78,8 @@ const account2 = {
 let accounts = [account1, account2];
 
 // Get local storage data
-if (localStorage.getItem("accData")) {
-  accounts = JSON.parse(localStorage.getItem("accData"));
+if (localStorage.getItem("accsData")) {
+  accounts = JSON.parse(localStorage.getItem("accsData"));
 }
 
 //============change from sign-in overlay to sign-up overlay=======================
@@ -90,13 +91,14 @@ signInButton.addEventListener("click", () => {
   signInUpContainer.classList.remove("right-panel-active");
 });
 
-//create a new user
-function User(owner, username, pin, movements, interestRate) {
+//====================create a new user===========================
+function User(owner, username, pin, movements, interestRate, movementsDates) {
   this.owner = owner;
   this.username = username;
   this.pin = pin;
   this.movements = movements;
   this.interestRate = interestRate;
+  this.movementsDates = movementsDates;
 }
 
 //===================create a new account========================
@@ -107,7 +109,8 @@ signUpFormBtn.addEventListener("click", function (e) {
   const newName = inputRegisterName.value;
   const newUsername = inputRegisterUsername.value;
   const newPin = +inputRegisterPin.value;
-  let newuser = new User(newName, newUsername, newPin, [100], 0.5);
+  const date = new Date().toISOString();
+  let newuser = new User(newName, newUsername, newPin, [100], 0.5, [date]);
   accounts.push(newuser);
   //clear the input fields
   inputRegisterName.value =
@@ -115,7 +118,7 @@ signUpFormBtn.addEventListener("click", function (e) {
     inputRegisterPin.value =
       "";
   //store account data
-  localStorage.setItem("accData", JSON.stringify(accounts));
+  localStorage.setItem("accsData", JSON.stringify(accounts));
   console.log(accounts);
 });
 
@@ -212,6 +215,13 @@ const currentDate = function () {
   labelDate.textContent = new Intl.DateTimeFormat(locale, options).format(now);
 };
 
+//==================Hide the main app==================
+const hideApp = function () {
+  appContent.classList.add("hidden");
+  signInUpContainer.classList.remove("hidden");
+  overlay.classList.remove("hidden");
+};
+
 //====================Logout Timer====================
 //track the inactivity of the user
 const StartLogoutTimer = function () {
@@ -225,9 +235,7 @@ const StartLogoutTimer = function () {
     if (time === 0) {
       clearInterval(timer);
       //hide the main app
-      appContent.classList.add("hidden");
-      signInUpContainer.classList.remove("hidden");
-      overlay.classList.remove("hidden");
+      hideApp();
     }
     //decrease time with a 1s
     time--;
@@ -296,7 +304,7 @@ const transferMoney = function () {
     currAccount.movementsDates.push(transferDate);
     receiverAcc.movementsDates.push(transferDate);
     //store account data
-    localStorage.setItem("accData", JSON.stringify(accounts));
+    localStorage.setItem("accsData", JSON.stringify(accounts));
     //update the main app
     updateUI(currAccount);
     //reset timer
@@ -326,13 +334,13 @@ btnLoan.addEventListener("click", function (e) {
       const loanDate = new Date().toISOString();
       currAccount.movementsDates.push(loanDate);
       //store account data
-      localStorage.setItem("accData", JSON.stringify(accounts));
+      localStorage.setItem("accsData", JSON.stringify(accounts));
       //update the main app
       updateUI(currAccount);
-      //reset timer
-      clearInterval(timer);
-      timer = StartLogoutTimer();
     }, 2000 * 60 * 60 * 24);
+    //reset timer
+    clearInterval(timer);
+    timer = StartLogoutTimer();
   }
   //clear the input field
   inputLoanAmount.value = "";
@@ -353,11 +361,9 @@ btnClose.addEventListener("click", function (e) {
     //delete the account
     accounts.splice(index, 1);
     //store account data
-    localStorage.setItem("accData", JSON.stringify(accounts));
+    localStorage.setItem("accsData", JSON.stringify(accounts));
     //hide the main app
-    appContent.classList.add("hidden");
-    signInUpContainer.classList.remove("hidden");
-    overlay.classList.remove("hidden");
+    hideApp();
   }
   //clear the input fields
   inputCloseUsername.value = inputClosePin.value = "";
@@ -373,3 +379,7 @@ btnSort.addEventListener("click", function (e) {
 });
 
 //========================Logout Button===========================
+btnLogout.addEventListener("click", function (e) {
+  e.preventDefault();
+  hideApp();
+});

@@ -4,21 +4,22 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="img/logo.ico" />
     <link rel="stylesheet" href="style.css" />
-    <title>e-Bank</title>
+    <title>e-Bank app</title>
   </head>
   <body>
     <!-- MAIN CONTENT -->
     <div class="main-content hidden">
       <!-- NAVBAR -->
       <header>
-        <img class="logo" src="./img/logo.png" alt="logo" />
+        <img class="logo" src="img/logo.png" alt="logo" />
         <nav>
           <ul class="navbar">
             <li><a href="#home" class="active">Home</a></li>
             <li><a href="#mymovements">Movements</a></li>
             <li><a href="#myoperations">Operations</a></li>
-            <li><a href="#">Log Out</a></li>
+            <li><a class="logout">Log Out</a></li>
           </ul>
         </nav>
         <p class="welcome"></p>
@@ -29,7 +30,7 @@
         <img
           id="#home"
           class="transparent-bg"
-          src="./img/bg.jpg"
+          src="img/bg.jpg"
           alt="background"
         />
         <h1>
@@ -53,11 +54,7 @@
         </div>
 
         <!-- MOVEMENTS -->
-        <div class="movements">
-          <div class="movements-row none-border"></div>
-          <div class="movements-row none-border"></div>
-          <div class="movements-row none-border"></div>
-        </div>
+        <div class="movements"></div>
 
         <!-- SUMMARY -->
         <div class="summary">

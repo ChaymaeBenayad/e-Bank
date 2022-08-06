@@ -283,9 +283,9 @@ header nav {
 
 .logo {
   float: left;
-  width: 90px;
-  height: 60px;
-  line-height: 60px;
+  width: 80px;
+  height: 70px;
+  margin-left: 20px;
 }
 .welcome {
   float: right;
@@ -343,7 +343,7 @@ header nav {
 }
 
 .balance-value {
-  font-size: 4rem;
+  font-size: 2.8rem;
   font-weight: 400;
 }
 
@@ -361,9 +361,7 @@ header nav {
   align-items: center;
   border-bottom: 1px solid #909090;
 }
-.none-border {
-  border: none;
-}
+
 .movements-type {
   font-size: 1.3rem;
   text-transform: uppercase;
@@ -544,6 +542,10 @@ h2 {
 .form-btn:focus {
   outline: none;
   background-color: rgba(255, 255, 255, 0.8);
+}
+
+.logout {
+  cursor: pointer;
 }
 
 .logout-timer {
