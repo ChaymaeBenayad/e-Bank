@@ -12,6 +12,7 @@ const overlay = document.querySelector(".light-gray-overlay");
 
 //Main app elements
 const appContent = document.querySelector(".main-content");
+const navLinks = document.querySelector(".navbar");
 const labelWelcome = document.querySelector(".welcome");
 const labelDate = document.querySelector(".balance-date");
 const labelBalance = document.querySelector(".balance-value");
@@ -110,6 +111,9 @@ signUpFormBtn.addEventListener("click", function (e) {
   const newUsername = inputRegisterUsername.value;
   const newPin = +inputRegisterPin.value;
   const date = new Date().toISOString();
+  //helper function
+  const checkEmpty = (...inputs) => inputs.every((inputVal) => inputVal !== "");
+  if (!checkEmpty(newName, newUsername, newPin, date)) return;
   let newuser = new User(newName, newUsername, newPin, [100], 0.5, [date]);
   accounts.push(newuser);
   //clear the input fields
@@ -123,6 +127,17 @@ signUpFormBtn.addEventListener("click", function (e) {
 });
 
 console.log(accounts);
+
+//============Navigate to sections through nav links==========
+navLinks.addEventListener("click", function (e) {
+  e.preventDefault();
+
+  if (e.target.classList.contains("nav-link")) {
+    const id = e.target.getAttribute("href");
+    if (!id) return;
+    document.querySelector(id).scrollIntoView({ behavior: "smooth" });
+  }
+});
 
 //===================Format the currency==================
 const formatCurrency = function (value) {
@@ -170,7 +185,7 @@ const displayMovements = function (acc, sort = false) {
         <div class="movements-value">${formattedMov}</div>
       </div>
     `;
-    containerMovements.insertAdjacentHTML("afterbegin", html);
+    containerMovements.insertAdjacentHTML("beforeend", html);
   });
 };
 
