@@ -1,6 +1,7 @@
 # Smart Bank Web Application
 
 Smart Bank is a modern and useful web application that makes banking experience easier for its users. It is developed using HTML5, CSS3 and JavaScript.
+
 ![logo](https://user-images.githubusercontent.com/78702422/195470820-98b14a58-5f26-4295-98c1-fa3b898b8d7b.png)
 
 ## Screenshots
