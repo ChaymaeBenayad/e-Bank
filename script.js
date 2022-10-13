@@ -47,14 +47,14 @@ const account1 = {
   movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
   interestRate: 1.2, // %
   movementsDates: [
-    "2022-08-04T21:31:17.178Z",
-    "2022-08-03T07:42:02.383Z",
-    "2022-08-02T09:15:04.904Z",
-    "2022-08-01T10:17:24.185Z",
-    "2022-07-28T14:11:59.604Z",
-    "2022-07-20T17:01:17.194Z",
-    "2022-07-15T23:36:17.929Z",
     "2022-07-12T10:51:36.790Z",
+    "2022-07-15T23:36:17.929Z",
+    "2022-07-20T17:01:17.194Z",
+    "2022-07-28T14:11:59.604Z",
+    "2022-08-01T10:17:24.185Z",
+    "2022-08-02T09:15:04.904Z",
+    "2022-08-03T07:42:02.383Z",
+    "2022-08-04T21:31:17.178Z",
   ],
 };
 
@@ -65,22 +65,22 @@ const account2 = {
   movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
   interestRate: 1.5,
   movementsDates: [
-    "2022-08-04T21:31:17.178Z",
-    "2022-08-03T07:42:02.383Z",
-    "2022-08-02T09:15:04.904Z",
-    "2022-08-01T10:17:24.185Z",
-    "2022-07-28T14:11:59.604Z",
-    "2022-07-20T17:01:17.194Z",
-    "2022-07-15T23:36:17.929Z",
     "2022-07-12T10:51:36.790Z",
+    "2022-07-15T23:36:17.929Z",
+    "2022-07-20T17:01:17.194Z",
+    "2022-07-28T14:11:59.604Z",
+    "2022-08-01T10:17:24.185Z",
+    "2022-08-02T09:15:04.904Z",
+    "2022-08-03T07:42:02.383Z",
+    "2022-08-04T21:31:17.178Z",
   ],
 };
 
 let accounts = [account1, account2];
 
 // Get local storage data
-if (localStorage.getItem("accsData")) {
-  accounts = JSON.parse(localStorage.getItem("accsData"));
+if (localStorage.getItem("accounts")) {
+  accounts = JSON.parse(localStorage.getItem("accounts"));
 }
 
 //============change from sign-in overlay to sign-up overlay=======================
@@ -122,7 +122,7 @@ signUpFormBtn.addEventListener("click", function (e) {
     inputRegisterPin.value =
       "";
   //store account data
-  localStorage.setItem("accsData", JSON.stringify(accounts));
+  localStorage.setItem("accounts", JSON.stringify(accounts));
   console.log(accounts);
 });
 
@@ -185,7 +185,7 @@ const displayMovements = function (acc, sort = false) {
         <div class="movements-value">${formattedMov}</div>
       </div>
     `;
-    containerMovements.insertAdjacentHTML("beforeend", html);
+    containerMovements.insertAdjacentHTML("afterbegin", html);
   });
 };
 
@@ -319,7 +319,7 @@ const transferMoney = function () {
     currAccount.movementsDates.push(transferDate);
     receiverAcc.movementsDates.push(transferDate);
     //store account data
-    localStorage.setItem("accsData", JSON.stringify(accounts));
+    localStorage.setItem("accounts", JSON.stringify(accounts));
     //update the main app
     updateUI(currAccount);
     //reset timer
@@ -349,7 +349,7 @@ btnLoan.addEventListener("click", function (e) {
       const loanDate = new Date().toISOString();
       currAccount.movementsDates.push(loanDate);
       //store account data
-      localStorage.setItem("accsData", JSON.stringify(accounts));
+      localStorage.setItem("accounts", JSON.stringify(accounts));
       //update the main app
       updateUI(currAccount);
     }, 2000 * 60 * 60 * 24);
@@ -376,7 +376,7 @@ btnClose.addEventListener("click", function (e) {
     //delete the account
     accounts.splice(index, 1);
     //store account data
-    localStorage.setItem("accsData", JSON.stringify(accounts));
+    localStorage.setItem("accounts", JSON.stringify(accounts));
     //hide the main app
     hideApp();
   }
